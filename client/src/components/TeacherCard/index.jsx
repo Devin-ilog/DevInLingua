@@ -10,7 +10,7 @@ function TeacherCard({ teacher, handleShowModal = null, variant = 1, hora = "", 
         <BsPersonCircle className="text-6xl me-3 mt-2 text-primary" />
         <div className="flex flex-col">
           <h4 role="option">{teacher.name}</h4>
-          <span aria-label="linguagens" title="Linguagens que o professor leciona">{!!teacher.languagens && teacher.languagens.join(" | ")}</span>
+          <span aria-label="linguagens">{!!teacher.languagens && teacher.languagens.join(" | ")}</span>
       </div>
       </div>
       {variant == 1 ? (
@@ -19,7 +19,7 @@ function TeacherCard({ teacher, handleShowModal = null, variant = 1, hora = "", 
         <div className="flex text-dark-green flex-col items-center mt-2">
           <div className="flex items-center">
             <IoCalendarNumber className="text-2xl me-3" />
-            {!!data && <h5 area-label="data-aula">{moment(data).format("DD/MM")}</h5>}
+            {!!data && <h5 aria-label="data-aula">{moment(data).format("DD/MM")}</h5>}
           </div>
           <div className="flex items-center">
             <MdOutlineWatchLater className="text-2xl me-3" />

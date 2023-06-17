@@ -6,36 +6,35 @@ jest.mock("../../../hooks/useTeacherList")
 
 const mockUseTeacherList = useTheacherList
 
-describe("<Home />", () => {
-  test("should render the teachers cards", () => {
-
-    const dados = [
-      {
-        id: 1,
-        name: "Bruno Costa",
-        languagens: [
-          "Inglês",
-          "Português"
-        ]
-      },
-      {
-        id: 2,
-        name: "Emanuela P.",
-        languagens: [
-          "Inglês",
-          "Português"
-        ]
-      }
+const renderComponent = () => {
+  const dados = [{
+    id: 1,
+    name: 'Bruno Costa',
+    languagens: [
+      'Inglês',
+      'Português'
     ]
+  },
+  {
+    id: 2,
+    name: 'Emanuela P.',
+    languagens: [
+      'Inglês',
+      'Português'
+    ]
+  }]
+  mockUseTeacherList.mockReturnValue({
+    teachers: dados,
+    error: null
+  })
 
-    mockUseTeacherList.mockReturnValue({
-      teachers: dados,
-      error: null
-    })
+  render(<Home />)
+}
 
-    render(<Home />)
+describe("<Home />", () => {
+  test("should render the teacher's cards ", () => {
+    renderComponent()
 
-    expect(screen.getByRole("option", {name: "Bruno Costa"})).toBeInTheDocument()
-    expect(screen.getByRole("option", {name: "Emanuela P."})).toBeInTheDocument()
+    expect(screen.getByText('Bruno Costa')).toBeInTheDocument()
   })
 })

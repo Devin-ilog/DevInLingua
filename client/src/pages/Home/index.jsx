@@ -26,10 +26,7 @@ function Home() {
     }
 
     try {
-      const response = await apiService.post("/classes", classItem)
-
-      console.log(response)
-
+      await apiService.post("/classes", classItem)
     } catch (error) {
       console.log(error)
     }
